@@ -29,9 +29,7 @@ public:
 
 	JuegoOthello(const JuegoOthello& EJ);
 
-	virtual ~JuegoOthello(){
-
-	}
+	virtual ~JuegoOthello() {}
 
 	virtual void reinicia(Turno JI){
 		JuegoLogT2::reinicia(JI); libres = numCols*numFils;

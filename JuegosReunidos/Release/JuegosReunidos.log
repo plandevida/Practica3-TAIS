@@ -1,9 +1,27 @@
-﻿Compilación iniciada a las 08/12/2013 13:03:10.
-Proyecto "C:\Users\alberto\Downloads\JuegosReunidos\JuegosReunidos.vcxproj" en el nodo 2 (clean destinos).
-_PrepareForClean:
-  Se eliminará el archivo "Release\JuegosReunidos.lastbuildstate".
-Compilación del proyecto terminada "C:\Users\alberto\Downloads\JuegosReunidos\JuegosReunidos.vcxproj" (clean destinos).
+﻿Compilación iniciada a las 26/12/2013 20:15:50.
+     1>Proyecto "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" en el nodo 2 (Build destinos).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Isrc /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /TP /wd4290 /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib JuegoOthello.cpp
+         JuegoOthello.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Isrc /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /TP /wd4290 /analyze- /errorReport:prompt "C:\Users\Daniel\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Release\app.res" app.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\Release\JuegosReunidos.exe" /INCREMENTAL:NO /NOLOGO /ASSEMBLYRESOURCE:Release\JuegosReunidos.Form1.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\Release\JuegosReunidos.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /SAFESEH Release\app.res
+         Release\AssemblyInfo.obj
+         Release\JuegoOthello.obj
+         Release\JuegosReunidos.obj
+         Release\InterfazGraf3enRaya.obj
+         Release\InterfazGrafT2.obj
+         Release\Juego3enRaya.obj
+         Release\JuegoLogT2.obj
+         Release\JugadorAlea3enRaya.obj
+         Release\stdafx.obj
+         "Release\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+         JuegosReunidos.vcxproj -> C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\Release\JuegosReunidos.exe
+     1>Compilación del proyecto terminada "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:00.01
+Tiempo transcurrido 00:00:01.55
