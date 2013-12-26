@@ -1,9 +1,11 @@
-﻿Compilación iniciada a las 07/12/2012 18:09:28.
-Proyecto "C:\VisualStudio\PRACTICA\JuegosReunidos\JuegosReunidos.vcxproj" en el nodo 2 (clean destinos).
-_PrepareForClean:
-  Se eliminará el archivo "Debug\JuegosReunidos.lastbuildstate".
-Compilación del proyecto terminada "C:\VisualStudio\PRACTICA\JuegosReunidos\JuegosReunidos.vcxproj" (clean destinos).
+﻿Compilación iniciada a las 26/12/2013 19:35:39.
+     1>Proyecto "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" en el nodo 2 (Build destinos).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Isrc /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /wd4290 /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib JegoOtelo.cpp
+         JegoOtelo.cpp
+     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JegoOtelo.h(3): error C2504: 'JuegoLogT2' : clase base sin definir
+     1>Compilación del proyecto terminada "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" (Build destinos) -- ERROR.
 
-Compilación correcta.
+ERROR al compilar.
 
-Tiempo transcurrido 00:00:00.06
+Tiempo transcurrido 00:00:00.32
