@@ -11,11 +11,10 @@
 #include "JuegoLogT2.h"
 #pragma unmanaged
 
-class JuegoOthello : public JuegoLogT2
-{
+class JuegoOthello : public JuegoLogT2 {
 
 public:
-	static const int numCols = 8;
+	static const int numCols = 9;
 	static const int numFils = 8;
 private:
 	unsigned int libres;
@@ -49,7 +48,10 @@ public:
 		try {
 			return dameCasilla(c, f) == Jn;
 		}
-		catch (EJuego &) { return false; }
+		catch (EJuego &) {
+			return false;
+		}
+
 		return false;
 	}
 };

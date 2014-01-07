@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="InterfazGrafOthello.cpp" />
     <ClCompile Include="JuegoOthello.cpp" />
     <ClCompile Include="JuegosReunidos.cpp" />
     <ClCompile Include="src\InterfazGraf3enRaya.cpp" />
@@ -111,6 +112,7 @@
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="InterfazGrafOthello.h" />
     <ClInclude Include="JuegoOthello.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\InterfazGraf3enRaya.h" />
