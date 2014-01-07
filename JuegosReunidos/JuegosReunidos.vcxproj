@@ -98,6 +98,7 @@
     <ClCompile Include="InterfazGrafOthello.cpp" />
     <ClCompile Include="JuegoOthello.cpp" />
     <ClCompile Include="JuegosReunidos.cpp" />
+    <ClCompile Include="JugadorAleaOthello.cpp" />
     <ClCompile Include="src\InterfazGraf3enRaya.cpp" />
     <ClCompile Include="src\InterfazGrafT2.cpp" />
     <ClCompile Include="src\Juego3enRaya.cpp" />
@@ -114,6 +115,7 @@
     </ClInclude>
     <ClInclude Include="InterfazGrafOthello.h" />
     <ClInclude Include="JuegoOthello.h" />
+    <ClInclude Include="JugadorAleaOthello.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\InterfazGraf3enRaya.h" />
     <ClInclude Include="src\InterfazGrafT2.h" />

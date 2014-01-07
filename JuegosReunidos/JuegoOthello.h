@@ -18,11 +18,23 @@ public:
 	static const int numFils = 8;
 private:
 	unsigned int libres;
-	bool conecta3(unsigned int c, unsigned int f);
+
+	// Guarda el número de fichas de cada color
+	// puestas en el tablero
+	// numFichas[0] -> Jhum
+	// numFichas[1] -> Jmaq
+	unsigned int numFichas[2];
+
+	// Si el jugador anterior ha pasado de turno
+	bool hapasado;
+
+	bool othello(unsigned int c, unsigned int f);
 	bool horizontal(unsigned int c, unsigned int f);
 	bool vertical(unsigned int c, unsigned int f);
 	bool subeDer(unsigned int c, unsigned int f);
 	bool subeIzq(unsigned int c, unsigned int f);
+
+	bool haPasado();
 public:
 	JuegoOthello(Turno JI = Jn);
 
@@ -31,7 +43,17 @@ public:
 	virtual ~JuegoOthello() {}
 
 	virtual void reinicia(Turno JI){
-		JuegoLogT2::reinicia(JI); libres = numCols*numFils;
+		JuegoLogT2::reinicia(JI);
+		
+		libres = numCols*numFils - 4;
+
+		tablero->at(3, 3) = Jhum;
+		tablero->at(4, 4) = Jhum;
+		numFichas[0] += 2;
+
+		tablero->at(4, 3) = Jmaq;
+		tablero->at(3, 4) = Jmaq;
+		numFichas[1] += 2;
 	}
 
 	virtual bool fin() const {
@@ -53,6 +75,18 @@ public:
 		}
 
 		return false;
+	}
+
+	unsigned int getBlancas() const {
+		return numFichas[0];
+	}
+
+	unsigned int getNegras() const {
+		return numFichas[1];
+	}
+
+	unsigned int getLibres() const {
+		return libres;
 	}
 };
 

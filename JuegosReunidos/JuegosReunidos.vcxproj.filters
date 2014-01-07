@@ -51,6 +51,9 @@
     <ClCompile Include="InterfazGrafOthello.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="JugadorAleaOthello.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -87,6 +90,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="InterfazGrafOthello.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="JugadorAleaOthello.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

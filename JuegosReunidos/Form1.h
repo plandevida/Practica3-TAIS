@@ -8,6 +8,11 @@
 #include "InterfazGraf3enRaya.h"
 #include "JugadorAlea3enRaya.h"
 
+#include "JuegoOthello.h"
+#include "InterfazGrafOthello.h"
+#include "JugadorAleaOthello.h"
+//#include "JugadorMinimaxOthello.h"
+
 //#include "JuegoConecta4.h"
 //#include "InterfazGrafConecta4.h"
 //#include "JugadorAleaConecta4.h"
@@ -95,6 +100,10 @@ namespace JuegosReunidos {
 				 partida = new Juego3enRaya();
 				 interfaz = new InterfazGraf3enRaya(Tablero->Width, Tablero->Height);
 				 jugador = new JugadorAlea3enRaya();
+				 
+				 //partida = new JuegoOthello();
+				 //interfaz = new InterfazGrafOthello(Tablero->Width, Tablero->Height);
+				 //jugador = new JugadorAleOthello();
 
 				 jugIni = Jhum;
 				 partida->reinicia(jugIni);
@@ -129,7 +138,7 @@ namespace JuegosReunidos {
 				 this->usuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				 this->ordenadorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				 this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->Tablero))->BeginInit();
+				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Tablero))->BeginInit();
 				 this->Menu->SuspendLayout();
 				 this->SuspendLayout();
 				 // 
@@ -146,8 +155,10 @@ namespace JuegosReunidos {
 				 // 
 				 // Menu
 				 // 
-				 this->Menu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->juegoToolStripMenuItem, 
-					 this->jugadorToolStripMenuItem, this->partidaToolStripMenuItem, this->salirToolStripMenuItem});
+				 this->Menu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+					 this->juegoToolStripMenuItem,
+						 this->jugadorToolStripMenuItem, this->partidaToolStripMenuItem, this->salirToolStripMenuItem
+				 });
 				 this->Menu->Location = System::Drawing::Point(0, 0);
 				 this->Menu->Name = L"Menu";
 				 this->Menu->Size = System::Drawing::Size(434, 24);
@@ -156,8 +167,10 @@ namespace JuegosReunidos {
 				 // 
 				 // juegoToolStripMenuItem
 				 // 
-				 this->juegoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->tresEnRayaToolStripMenuItem, 
-					 this->conecta4ToolStripMenuItem, this->oteloToolStripMenuItem});
+				 this->juegoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+					 this->tresEnRayaToolStripMenuItem,
+						 this->conecta4ToolStripMenuItem, this->oteloToolStripMenuItem
+				 });
 				 this->juegoToolStripMenuItem->Name = L"juegoToolStripMenuItem";
 				 this->juegoToolStripMenuItem->Size = System::Drawing::Size(50, 20);
 				 this->juegoToolStripMenuItem->Text = L"Juego";
@@ -179,12 +192,15 @@ namespace JuegosReunidos {
 				 // 
 				 this->oteloToolStripMenuItem->Name = L"oteloToolStripMenuItem";
 				 this->oteloToolStripMenuItem->Size = System::Drawing::Size(152, 22);
-				 this->oteloToolStripMenuItem->Text = L"Otelo";
+				 this->oteloToolStripMenuItem->Text = L"Othello";
+				 this->oteloToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::oteloToolStripMenuItem_Click);
 				 // 
 				 // jugadorToolStripMenuItem
 				 // 
-				 this->jugadorToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->aleatorioToolStripMenuItem, 
-					 this->inteligenteToolStripMenuItem});
+				 this->jugadorToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+					 this->aleatorioToolStripMenuItem,
+						 this->inteligenteToolStripMenuItem
+				 });
 				 this->jugadorToolStripMenuItem->Name = L"jugadorToolStripMenuItem";
 				 this->jugadorToolStripMenuItem->Size = System::Drawing::Size(61, 20);
 				 this->jugadorToolStripMenuItem->Text = L"Jugador";
@@ -198,8 +214,10 @@ namespace JuegosReunidos {
 				 // 
 				 // inteligenteToolStripMenuItem
 				 // 
-				 this->inteligenteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->altoToolStripMenuItem, 
-					 this->medioToolStripMenuItem, this->bajoToolStripMenuItem});
+				 this->inteligenteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+					 this->altoToolStripMenuItem,
+						 this->medioToolStripMenuItem, this->bajoToolStripMenuItem
+				 });
 				 this->inteligenteToolStripMenuItem->Name = L"inteligenteToolStripMenuItem";
 				 this->inteligenteToolStripMenuItem->Size = System::Drawing::Size(130, 22);
 				 this->inteligenteToolStripMenuItem->Text = L"Inteligente";
@@ -227,8 +245,10 @@ namespace JuegosReunidos {
 				 // 
 				 // partidaToolStripMenuItem
 				 // 
-				 this->partidaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->usuarioToolStripMenuItem, 
-					 this->ordenadorToolStripMenuItem});
+				 this->partidaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+					 this->usuarioToolStripMenuItem,
+						 this->ordenadorToolStripMenuItem
+				 });
 				 this->partidaToolStripMenuItem->Name = L"partidaToolStripMenuItem";
 				 this->partidaToolStripMenuItem->Size = System::Drawing::Size(56, 20);
 				 this->partidaToolStripMenuItem->Text = L"Partida";
@@ -259,7 +279,7 @@ namespace JuegosReunidos {
 				 this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				 this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				 this->BackColor = System::Drawing::Color::Silver;
-				 this->ClientSize = System::Drawing::Size(434, 462);
+				 this->ClientSize = System::Drawing::Size(434, 461);
 				 this->Controls->Add(this->Tablero);
 				 this->Controls->Add(this->Menu);
 				 this->MainMenuStrip = this->Menu;
@@ -269,7 +289,7 @@ namespace JuegosReunidos {
 				 this->Name = L"Form1";
 				 this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 				 this->Text = L"Juegos Reunidos";
-				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->Tablero))->EndInit();
+				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Tablero))->EndInit();
 				 this->Menu->ResumeLayout(false);
 				 this->Menu->PerformLayout();
 				 this->ResumeLayout(false);
@@ -367,9 +387,10 @@ private: System::Void aleatorioToolStripMenuItem_Click(System::Object^  sender, 
 				 //INCOMPLETO jugador = new JugadorAleaConecta4();
 				 break;
 			 case tresEnRaya:
-				 jugador= new JugadorAlea3enRaya(); break;
+				 jugador = new JugadorAlea3enRaya();
+				 break;
 			 case otelo:
-				 //INCOMPLETO jugador=new JugadorAleaOtelo(); 
+				 jugador = new JugadorAleaOthello();
 				 break;
 
 			 }
@@ -390,6 +411,20 @@ private: System::Void tresEnRayaToolStripMenuItem_Click(System::Object^  sender,
 			 }
 		 }
 
-};
+private: System::Void oteloToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if (juego != otelo) {
+				 juego = otelo;
+				 delete partida;
+				 partida = new JuegoOthello();
+				 delete interfaz;
+				 interfaz = new InterfazGrafOthello(Tablero->Width, Tablero->Height);
+				 if (tipoJugador == alea) jugador = new JugadorAleaOthello();
+				 // else // tipoJugador == minimax
+				 //	 jugador = new JugadorMinimaxOthello(nivel);
+				 partida->reinicia(jugIni);
+				 Tablero->Refresh();
+			 }
 }
 
+};
+}

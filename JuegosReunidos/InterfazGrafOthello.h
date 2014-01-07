@@ -9,6 +9,7 @@
 #define INTERFAZGRAFOTHELLO_H_
 using namespace System::Drawing;
 
+#include <sstream>
 #include "InterfazGrafT2.h"
 #include "JuegoOthello.h"
 #pragma unmanaged

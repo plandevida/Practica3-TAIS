@@ -7,7 +7,10 @@
 
 #include "JuegoOthello.h"
 
-JuegoOthello::JuegoOthello(Turno JI) : libres(numCols*numFils) {
+JuegoOthello::JuegoOthello(Turno JI) : libres(numCols*numFils-4), hapasado(false) {
+
+	numFichas[0] = 0;
+	numFichas[1] = 0;
 
 	turno = JI;
 	tablero = new Matriz<Ficha>(numCols, numFils, Jn);
@@ -16,6 +19,8 @@ JuegoOthello::JuegoOthello(Turno JI) : libres(numCols*numFils) {
 JuegoOthello::JuegoOthello(const JuegoOthello& EJ) : JuegoLogT2(EJ) {
 
 	libres = EJ.libres;
+	numFichas[0] = EJ.numFichas[0];
+	numFichas[1] = EJ.numFichas[1];
 }
 
 void JuegoOthello::aplicaJugada(unsigned int c, unsigned int f) throw(EJuego) {
@@ -24,15 +29,37 @@ void JuegoOthello::aplicaJugada(unsigned int c, unsigned int f) throw(EJuego) {
 
 		tablero->at(c, f) = turno;
 		libres--;
-		ganador = conecta3(c, f);
+
+		if ( turno == Jhum )
+			numFichas[0]++;
+		else if ( turno == Jmaq )
+			numFichas[1]++;
+
+		ganador = othello(c, f);
+
+		if (numFichas[0] > numFichas[1]) {
+			turno = Jhum;
+		}
+		else if (numFichas[0] < numFichas[1]) {
+			turno = Jmaq;
+		}
+		else {
+			turno = Jn;
+		}
 
 		if (!ganador) turno = cambia(turno);
 	}
 	else throw EJuego("Jugada incorrecta");
 }
 
-bool JuegoOthello::conecta3(unsigned int c, unsigned int f) {
-	return (vertical(c, f) || horizontal(c, f) || subeDer(c, f) || subeIzq(c, f));
+bool JuegoOthello::othello(unsigned int c, unsigned int f) {
+	bool res = false;
+
+	if ( fin() ) {
+
+	}
+
+	return res;
 }
 
 bool JuegoOthello::vertical(unsigned int c, unsigned int f) {
