@@ -29,12 +29,22 @@ private:
 	bool hapasado;
 
 	bool othello(unsigned int c, unsigned int f);
-	bool horizontal(unsigned int c, unsigned int f);
-	bool vertical(unsigned int c, unsigned int f);
-	bool subeDer(unsigned int c, unsigned int f);
-	bool subeIzq(unsigned int c, unsigned int f);
 
-	bool haPasado();
+	void convierteHorizontal(unsigned int c, unsigned int f);
+	bool compruebaHorizontal(unsigned int c, unsigned int f) const;
+
+	void convierteVertical(unsigned int c, unsigned int f);
+	bool compruebaVertical(unsigned int c, unsigned int f) const;
+
+	void convierteDiagonalDer(unsigned int c, unsigned int f);
+	bool compruebaDiagonalDer(unsigned int c, unsigned int f) const;
+
+	void convierteDiagonalIzq(unsigned int c, unsigned int f);
+	bool compruebaDiagonalIzq(unsigned int c, unsigned int f) const;
+
+	void setHaPasado(bool pasado) {
+		hapasado = pasado;
+	}
 public:
 	JuegoOthello(Turno JI = Jn);
 
@@ -45,14 +55,14 @@ public:
 	virtual void reinicia(Turno JI){
 		JuegoLogT2::reinicia(JI);
 		
-		libres = numCols*numFils - 4;
+		libres = (numCols - 1) * numFils - 4;
 
-		tablero->at(3, 3) = Jhum;
 		tablero->at(4, 4) = Jhum;
+		tablero->at(3, 3) = Jhum;
 		numFichas[0] += 2;
 
-		tablero->at(4, 3) = Jmaq;
 		tablero->at(3, 4) = Jmaq;
+		tablero->at(4, 3) = Jmaq;
 		numFichas[1] += 2;
 	}
 
@@ -67,14 +77,22 @@ public:
 	virtual void aplicaJugada(unsigned int c, unsigned int f) throw(EJuego);
 
 	virtual bool sePuede(unsigned int c, unsigned int f) const throw() {
+
+		bool puede = false;
+
 		try {
-			return dameCasilla(c, f) == Jn;
+			//puede = (dameCasilla(c, f) == Jn) && ();
+			puede = dameCasilla(c, f) == Jn
+					|| compruebaHorizontal(c, f)
+				    || compruebaVertical(c, f)
+					|| compruebaDiagonalDer(c, f)
+					|| compruebaDiagonalIzq(c, f);
 		}
 		catch (EJuego &) {
 			return false;
 		}
 
-		return false;
+		return puede;
 	}
 
 	unsigned int getBlancas() const {
@@ -87,6 +105,10 @@ public:
 
 	unsigned int getLibres() const {
 		return libres;
+	}
+
+	bool haPasado() {
+		return hapasado;
 	}
 };
 

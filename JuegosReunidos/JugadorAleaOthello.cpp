@@ -24,6 +24,7 @@ Casilla JugadorAleaOthello::juega(const JuegoLogT2& EJ) const throw(EJugador) {
 			col = rand() % Ncol;
 			fil = rand() % Nfil;
 		}
+
 		return Casilla(col, fil);
 	}
 }
