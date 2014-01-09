@@ -16,7 +16,7 @@ Casilla JugadorAleaOthello::juega(const JuegoLogT2& EJ) const throw(EJugador) {
 	else {
 		if (EJ.final()) throw EJugador();
 		int col, fil;
-		unsigned int Ncol = EJ.numCol();
+		unsigned int Ncol = EJ.numCol()-1;
 		unsigned int Nfil = EJ.numFil();
 		col = rand() % Ncol;
 		fil = rand() % Nfil;

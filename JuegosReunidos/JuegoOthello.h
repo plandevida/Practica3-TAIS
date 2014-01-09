@@ -81,7 +81,7 @@ public:
 		bool puede = false;
 
 		try {
-			//puede = (dameCasilla(c, f) == Jn) && ();
+			//puede = (dameCasilla(c, f) == Jn);
 			puede = dameCasilla(c, f) == Jn
 					|| compruebaHorizontal(c, f)
 				    || compruebaVertical(c, f)

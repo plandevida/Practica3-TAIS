@@ -45,17 +45,10 @@ void JuegoOthello::aplicaJugada(unsigned int c, unsigned int f) throw(EJuego) {
 
 			ganador = othello(c, f);
 
-			if (numFichas[0] > numFichas[1]) {
-				turno = Jhum;
-			}
-			else if (numFichas[0] < numFichas[1]) {
-				turno = Jmaq;
-			}
-			else {
-				turno = Jn;
-			}
-
 			//convierteHorizontal(c, f);
+			//convierteVertical(c, f);
+			//convierteDiagonalDer(c, f);
+			//convierteDiagonalIzq(c, f);
 
 			if (!ganador) turno = cambia(turno);
 		}
@@ -83,7 +76,7 @@ void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
 
 		if (dameCasilla(c, fila) == turno) {
 
-			// Desplazamos una casilla a la derecha.
+			// Desplazamos una casilla hacia arriba.
 			fila++;
 
 			while (fila <= f - 1) {
@@ -105,7 +98,7 @@ void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
 
 		if (dameCasilla(c, fila) == turno) {
 
-			// Desplazamos una casilla a la izq.
+			// Desplazamos una casilla hacia abajo.
 			fila--;
 
 			while (fila >= f + 1) {
@@ -124,24 +117,47 @@ void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
 
 bool JuegoOthello::compruebaVertical(unsigned int c, unsigned int f) const {
 
-	bool valida = true;
-	/*
+	// Válida representa una ficha del color del jugador
+	bool validaAr, validaAb = false;
+
+	// Vacía representa una casilla sin ficha
+	bool vaciasAr, vaciasAb = false;
+
 	if ((enRango(c, f - 1) && (dameCasilla(c, f - 1) == cambia(turno))) || (enRango(c, f + 1) && (dameCasilla(c, f + 1) == cambia(turno)))) {
 
-		unsigned int filaInf = f - 2;
-		unsigned int filaSup = f + 2;
+		unsigned int filaAr = f - 2;
+		unsigned int filaAb = f + 2;
 
-		while (!valida && (enRango(c, filaInf) || enRango(c, filaSup))) {
+		while (!vaciasAr && !validaAr && enRango(c, filaAr)) {
 
-			if (enRango(c, filaInf) && dameCasilla(c, filaInf) == turno) valida = true;
-			if (enRango(c, filaSup) && dameCasilla(c, filaSup) == turno) valida = true;
+			if (dameCasilla(c, filaAr) == Jn) {
+				vaciasAr = true;
+			}
+			else {
+				if (dameCasilla(c, filaAr) == turno) {
+					validaAr = true;
+				}
+			}
 
-			filaInf--;
-			filaSup++;
+			filaAr++;
+		}
+
+		while (!vaciasAb && !validaAb && enRango(c, filaAb)) {
+
+			if (dameCasilla(c, filaAb) == Jn) {
+				vaciasAb = true;
+			}
+			else {
+				if (dameCasilla(c, filaAb) == turno) {
+					validaAb = true;
+				}
+			}
+
+			filaAb++;
 		}
 	}
-	*/
-	return valida;
+
+	return (validaAr && !vaciasAr) || (validaAb && !vaciasAb);
 }
 
 void JuegoOthello::convierteHorizontal(unsigned int c, unsigned int f) {
@@ -194,14 +210,53 @@ void JuegoOthello::convierteHorizontal(unsigned int c, unsigned int f) {
 }
 
 bool JuegoOthello::compruebaHorizontal(unsigned int c, unsigned int f) const {
+	
+	unsigned int ultimaIgual = -1;
+	bool hayVacias = false;
 
+	bool iz, dr = false;
+
+	for (unsigned int i = 0; i < c; i++) {
+
+		if (dameCasilla(i, f) == turno) {
+			ultimaIgual = i;
+		}
+		else if (ultimaIgual != -1 && dameCasilla(i, f) == Jn) {
+			hayVacias = true;
+		}
+	}
+
+	if (!hayVacias && ultimaIgual != -1) {
+		iz =  true;
+	}
+
+	ultimaIgual = -1;
+	hayVacias = false;
+
+	for (unsigned int j = 8; j > c; j--) {
+
+		if (dameCasilla(j, f) == turno) {
+			ultimaIgual = j;
+		}
+		else if (ultimaIgual != -1 && dameCasilla(j, f) == Jn) {
+			hayVacias = true;
+		}
+	}
+
+	if (!hayVacias && ultimaIgual != -1) {
+		dr = true;
+	}
+
+	return iz || dr;
+
+	/*
 	// Válida representa una ficha del color del jugador
 	bool validaIz, validaDr = false;
 
 	// Vacía representa una casilla sin ficha
 	bool vaciasIz, vaciasDr = false;
 
-	if ( (enRango(c - 1, f) && (dameCasilla(c - 1, f) == cambia(turno))) || (enRango(c + 1, f) && (dameCasilla(c + 1, f) == cambia(turno))) ) {
+	if ((enRango(c - 1, f) && (dameCasilla(c - 1, f) == cambia(turno))) || (enRango(c + 1, f) && (dameCasilla(c + 1, f) == cambia(turno)))) {
 
 		unsigned int colIzq = c - 2;
 		unsigned int colDrc = c + 2;
@@ -212,7 +267,7 @@ bool JuegoOthello::compruebaHorizontal(unsigned int c, unsigned int f) const {
 				vaciasIz = true;
 			}
 			else {
-				if (dameCasilla(colIzq, f)) {
+				if (dameCasilla(colIzq, f) == turno) {
 					validaIz = true;
 				}
 			}
@@ -226,36 +281,16 @@ bool JuegoOthello::compruebaHorizontal(unsigned int c, unsigned int f) const {
 				vaciasDr = true;
 			}
 			else {
-				if (dameCasilla(colDrc, f)) {
+				if (dameCasilla(colDrc, f) == turno) {
 					validaDr = true;
 				}
 			}
 
 			colDrc++;
 		}
-
-		/*
-		while ( !vacias && !valida && ( enRango(colIzq, f) || enRango(colDrc, f) ) ) {
-			
-			if ((enRango(colIzq, f) && dameCasilla(colIzq, f) == Jn) || (enRango(colDrc, f) && dameCasilla(colDrc, f) == Jn)) {
-				vacias = true;
-			}
-			else {
-				if (enRango(colIzq, f) && dameCasilla(colIzq, f) == turno) {
-					valida = true;
-				}
-
-				if (enRango(colDrc, f) && dameCasilla(colDrc, f) == turno) {
-					valida = true;
-				}
-
-				colIzq--;
-				colDrc++;
-			}
-		}*/
 	}
 
-	return validaIz && !vaciasIz && validaDr && !vaciasDr;
+	return (validaIz && !vaciasIz) || (validaDr && !vaciasDr);*/
 }
 
 void JuegoOthello::convierteDiagonalDer(unsigned int c, unsigned int f) {
