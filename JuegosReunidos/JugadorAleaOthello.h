@@ -8,6 +8,7 @@
 #ifndef JUGADORALEAOTHELLO_H_
 #define JUGADORALEAOTHELLO_H_
 
+#include <list>
 #include "JugadorAutoT2.h"
 #include "JuegoOthello.h"
 

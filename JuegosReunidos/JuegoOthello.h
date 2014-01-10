@@ -82,11 +82,11 @@ public:
 
 		try {
 			//puede = (dameCasilla(c, f) == Jn);
-			puede = dameCasilla(c, f) == Jn
-					|| compruebaHorizontal(c, f)
-				    || compruebaVertical(c, f)
-					|| compruebaDiagonalDer(c, f)
-					|| compruebaDiagonalIzq(c, f);
+			puede = (dameCasilla(c, f) == Jn)
+					&& (compruebaHorizontal(c, f) 
+						|| compruebaVertical(c, f)
+						|| compruebaDiagonalDer(c, f));
+					//|| compruebaDiagonalIzq(c, f) );
 		}
 		catch (EJuego &) {
 			return false;
