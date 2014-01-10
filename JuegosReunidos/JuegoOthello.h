@@ -32,15 +32,23 @@ private:
 
 	void convierteHorizontal(unsigned int c, unsigned int f);
 	bool compruebaHorizontal(unsigned int c, unsigned int f) const;
+	bool compruebaIzHorizontal(unsigned int c, unsigned int f) const;
+	bool compruebaDrHorizontal(unsigned int c, unsigned int f) const;
 
 	void convierteVertical(unsigned int c, unsigned int f);
 	bool compruebaVertical(unsigned int c, unsigned int f) const;
+	bool compruebaArVertical(unsigned int c, unsigned int f) const;
+	bool compruebaAbVertical(unsigned int c, unsigned int f) const;
 
 	void convierteDiagonalDer(unsigned int c, unsigned int f);
 	bool compruebaDiagonalDer(unsigned int c, unsigned int f) const;
+	bool compruebaArDiagonalDer(unsigned int c, unsigned int f) const;
+	bool compruebaAbDiagonalDer(unsigned int c, unsigned int f) const;
 
 	void convierteDiagonalIzq(unsigned int c, unsigned int f);
 	bool compruebaDiagonalIzq(unsigned int c, unsigned int f) const;
+	bool compruebaArDiagonalIzq(unsigned int c, unsigned int f) const;
+	bool compruebaAbDiagonalIzq(unsigned int c, unsigned int f) const;
 
 	void setHaPasado(bool pasado) {
 		hapasado = pasado;
@@ -81,12 +89,11 @@ public:
 		bool puede = false;
 
 		try {
-			//puede = (dameCasilla(c, f) == Jn);
 			puede = (dameCasilla(c, f) == Jn)
 					&& (compruebaHorizontal(c, f) 
 						|| compruebaVertical(c, f)
-						|| compruebaDiagonalDer(c, f));
-					//|| compruebaDiagonalIzq(c, f) );
+						|| compruebaDiagonalDer(c, f)
+						|| compruebaDiagonalIzq(c, f) );
 		}
 		catch (EJuego &) {
 			return false;
