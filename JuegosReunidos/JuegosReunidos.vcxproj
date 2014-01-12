@@ -99,6 +99,7 @@
     <ClCompile Include="JuegoOthello.cpp" />
     <ClCompile Include="JuegosReunidos.cpp" />
     <ClCompile Include="JugadorAleaOthello.cpp" />
+    <ClCompile Include="JugadorMinimaxOthello.cpp" />
     <ClCompile Include="src\InterfazGraf3enRaya.cpp" />
     <ClCompile Include="src\InterfazGrafT2.cpp" />
     <ClCompile Include="src\Juego3enRaya.cpp" />
@@ -114,6 +115,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="InterfazGrafOthello.h" />
+    <ClInclude Include="JugadorMinimaxOthello.h" />
+    <ClInclude Include="JugadorMinimaxT2.h" />
     <ClInclude Include="JuegoOthello.h" />
     <ClInclude Include="JugadorAleaOthello.h" />
     <ClInclude Include="resource.h" />

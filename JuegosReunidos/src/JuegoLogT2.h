@@ -33,6 +33,10 @@ public:
     unsigned int col;
     unsigned int fil;
     Casilla(unsigned int c=0, unsigned int f=0):col(c),fil(f){};
+
+	bool operator==(const Casilla& cas) {
+		return (col == cas.col && fil == cas.fil);
+	}
 };
 
 ostream& operator<<(ostream& o,const Casilla& ca);

@@ -54,6 +54,9 @@
     <ClCompile Include="JugadorAleaOthello.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="JugadorMinimaxOthello.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -93,6 +96,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="JugadorAleaOthello.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="JugadorMinimaxT2.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="JugadorMinimaxOthello.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

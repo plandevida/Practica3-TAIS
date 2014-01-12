@@ -25,6 +25,17 @@ void InterfazGrafOthello::muestraEst(Graphics^ canvas, const JuegoOthello& EJ) c
 		case Jmaq: canvas->DrawString("Turno máquina", letra, Brushes::Blue, pr); break;
 	}
 	else {
+
+		/*if (EJ.getNegras() > EJ.getBlancas()) {
+			canvas->DrawString("GANADOR: Máquina", letra, Brushes::Red, pr);
+		}
+		else if (EJ.getNegras() < EJ.getBlancas()) {
+			canvas->DrawString("GANADOR: Usuario", letra, Brushes::Red, pr);
+		}
+		else {
+			canvas->DrawString("EMPATE", letra, Brushes::Red, pr);
+		}*/
+
 		switch (EJ.dameGanador()){
 		case Jhum: canvas->DrawString("GANADOR: Usuario", letra, Brushes::Red, pr); break;
 		case Jmaq: canvas->DrawString("GANADOR: Máquina", letra, Brushes::Red, pr); break;
@@ -63,7 +74,7 @@ void InterfazGrafOthello::muestraEst(Graphics^ canvas, const JuegoOthello& EJ) c
 	Point posfichas(100, window_height - ladoCasilla / 2);
 
 	std::ostringstream oss;
-	oss << "Libres: " << EJ.getLibres() << ", Blancas: " << EJ.getBlancas() << ", Negras: " << EJ.getNegras();
+	oss << "Libres: " << EJ.getLibres() << ", Azules: " << EJ.getBlancas() << ", Naranjas: " << EJ.getNegras();
 	System::String^ cadena = gcnew System::String(oss.str().c_str());
 
 	canvas->DrawString(cadena, letra, Brushes::Black, posfichas);

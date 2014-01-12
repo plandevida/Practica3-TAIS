@@ -17,6 +17,8 @@ public:
 	static const int numCols = 9;
 	static const int numFils = 8;
 private:
+
+	// Cuantas casillas libres quedan
 	unsigned int libres;
 
 	// Guarda el número de fichas de cada color
@@ -27,6 +29,9 @@ private:
 
 	// Si el jugador anterior ha pasado de turno
 	bool hapasado;
+
+	// Casilla de la última ficha puesta
+	Casilla cas;
 
 	bool othello(unsigned int c, unsigned int f);
 
@@ -50,6 +55,8 @@ private:
 	bool compruebaArDiagonalIzq(unsigned int c, unsigned int f) const;
 	bool compruebaAbDiagonalIzq(unsigned int c, unsigned int f) const;
 
+	bool compruebaPasar() const;
+
 	void setHaPasado(bool pasado) {
 		hapasado = pasado;
 	}
@@ -62,8 +69,10 @@ public:
 
 	virtual void reinicia(Turno JI){
 		JuegoLogT2::reinicia(JI);
+
+
 		
-		libres = (numCols - 1) * numFils - 4;
+		libres = ((numCols - 1) * numFils) - 4;
 
 		tablero->at(4, 4) = Jhum;
 		tablero->at(3, 3) = Jhum;
@@ -72,6 +81,8 @@ public:
 		tablero->at(3, 4) = Jmaq;
 		tablero->at(4, 3) = Jmaq;
 		numFichas[1] += 2;
+
+		cas = Casilla(3, 4);
 	}
 
 	virtual bool fin() const {
@@ -89,11 +100,17 @@ public:
 		bool puede = false;
 
 		try {
-			puede = (dameCasilla(c, f) == Jn)
-					&& (compruebaHorizontal(c, f) 
-						|| compruebaVertical(c, f)
-						|| compruebaDiagonalDer(c, f)
-						|| compruebaDiagonalIzq(c, f) );
+			if (c == 8) {
+				if (compruebaPasar())
+					puede = true;
+			}
+			else {
+				puede = (dameCasilla(c, f) == Jn)
+						&& (compruebaHorizontal(c, f)
+							|| compruebaVertical(c, f)
+							|| compruebaDiagonalDer(c, f)
+							|| compruebaDiagonalIzq(c, f));
+			}
 		}
 		catch (EJuego &) {
 			return false;
@@ -114,8 +131,12 @@ public:
 		return libres;
 	}
 
-	bool haPasado() {
+	bool haPasado() const {
 		return hapasado;
+	}
+
+	Casilla getUltimaCasilla() const {
+		return cas;
 	}
 };
 

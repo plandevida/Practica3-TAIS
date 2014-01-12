@@ -11,6 +11,7 @@ JuegoOthello::JuegoOthello(Turno JI) : libres( ((numCols-1)*numFils) - 4), hapas
 
 	numFichas[0] = 0;
 	numFichas[1] = 0;
+	cas = Casilla(3, 4);
 
 	turno = JI;
 	tablero = new Matriz<Ficha>(numCols, numFils, Jn);
@@ -28,35 +29,55 @@ void JuegoOthello::aplicaJugada(unsigned int c, unsigned int f) throw(EJuego) {
 
 	if (sePuede(c, f) && !ganador) {
 
-		if (c == numCols) {
+		// Se ha pasado turno
+		if (c == numCols - 1) {
 			setHaPasado(true);
+
+			ganador = othello(c, f);
+
+			if (!ganador) turno = cambia(turno);
 		}
-		else {
+		else { // Se puede poner ficha
 
 			setHaPasado(false);
 
 			tablero->at(c, f) = turno;
+			// Se guarda la última casilla donde se puso ficha
+			cas = Casilla(c, f);
 			libres--;
 
+			// Aumenta el número de fichas del jugador
 			if (turno == Jhum)
 				numFichas[0]++;
 			else if (turno == Jmaq)
 				numFichas[1]++;
 
+			// Determina si hay ganador
 			ganador = othello(c, f);
 
-			if (compruebaHorizontal(c, f))
-				convierteHorizontal(c, f);
+			// Convierte las fichas del contrario
+			convierteHorizontal(c, f);
+			convierteVertical(c, f);
+			convierteDiagonalDer(c, f);
+			convierteDiagonalIzq(c, f);
 
-			if (compruebaVertical(c, f))
-				convierteVertical(c, f);
+			// Pone el turno del ganador, en 
+			// función del número de fichas
+			// para que aparezca en la ventana.
+			if (ganador) {
+				if (getBlancas() > getNegras()) {
 
-			if (compruebaDiagonalDer(c, f))
-				convierteDiagonalDer(c, f);
-			
-			if (compruebaDiagonalIzq(c, f))
-				convierteDiagonalIzq(c, f);
-				
+					turno = Jhum;
+				}
+				else if (getBlancas() < getNegras()) {
+					turno = Jmaq;
+				}
+				else {
+					turno = Jn;
+				}
+			}
+
+			// Si hay ganador no se cambia el turno
 			if (!ganador) turno = cambia(turno);
 		}
 	}
@@ -76,10 +97,8 @@ bool JuegoOthello::othello(unsigned int c, unsigned int f) {
 			for (int fil = 0; fil < 8; fil++) {
 
 				if (!sePuede(col, fil)) {
-					res = true;
-				}
-				else { // Comprobamos que el contrario tampoco puede poner
 
+					// Comprobamos que el contrario tampoco puede poner
 					turno = cambia(turno);
 
 					if (!sePuede(col, fil)) {
@@ -87,15 +106,51 @@ bool JuegoOthello::othello(unsigned int c, unsigned int f) {
 					}
 					else {
 						res = false;
+
+						// Se reestablece el turno anterior antes de salir
+						// del bucle
+						turno = cambia(turno);
+						break;
 					}
 
+					// Se reestablece el turno anterior
 					turno = cambia(turno);
 				}
+				else {
+					res = false;
+					break;
+				}
+			}
+			if (!res) {
+				break;
 			}
 		}
 	}
 
-	return false;
+	return res;
+}
+
+bool JuegoOthello::compruebaPasar() const {
+	bool res = false;
+
+	// Se comprueba que no se puede poner en ninguna casilla libre
+	for (int col = 0; col < 8; col++) {
+		for (int fil = 0; fil < 8; fil++) {
+
+			if (!sePuede(col, fil)) {
+				res = true;
+			}
+			else {
+				res = false;
+				break;
+			}
+		}
+		if (!res) {
+			break;
+		}
+	}
+	
+	return res;
 }
 
 void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
@@ -103,6 +158,8 @@ void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
 	int fila = f - 2;
 	bool infConvertida = false;
 	bool supConvertida = false;
+
+	int convertidas = 0;
 
 	if (compruebaAbVertical(c, f)) {
 		while (enRango(c, fila) && !infConvertida) {
@@ -115,6 +172,8 @@ void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
 				while (fila <= f - 1) {
 
 					tablero->at(c, fila) = turno;
+
+					convertidas++;
 
 					fila++;
 
@@ -140,6 +199,8 @@ void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
 
 					tablero->at(c, fila) = turno;
 
+					convertidas++;
+
 					fila--;
 
 					supConvertida = true;
@@ -148,6 +209,17 @@ void JuegoOthello::convierteVertical(unsigned int c, unsigned int f) {
 
 			fila++;
 		}
+	}
+
+	if (turno == Jhum) {
+
+		numFichas[0] += convertidas;
+		numFichas[1] -= convertidas;
+	}
+	else if (turno == Jmaq) {
+
+		numFichas[1] += convertidas;
+		numFichas[0] -= convertidas;
 	}
 }
 
@@ -222,6 +294,8 @@ void JuegoOthello::convierteHorizontal(unsigned int c, unsigned int f) {
 	bool izConvertida = false;
 	bool drConvertida = false;
 
+	int convertidas = 0;
+
 	if (compruebaIzHorizontal(c, f)) {
 		while (enRango(col, f) && !izConvertida) {
 
@@ -233,6 +307,8 @@ void JuegoOthello::convierteHorizontal(unsigned int c, unsigned int f) {
 				while (col <= c - 1) {
 
 					tablero->at(col, f) = turno;
+
+					convertidas++;
 
 					col++;
 
@@ -258,6 +334,8 @@ void JuegoOthello::convierteHorizontal(unsigned int c, unsigned int f) {
 
 					tablero->at(col, f) = turno;
 
+					convertidas++;
+
 					col--;
 
 					drConvertida = true;
@@ -266,6 +344,17 @@ void JuegoOthello::convierteHorizontal(unsigned int c, unsigned int f) {
 
 			col++;
 		}
+	}
+
+	if (turno == Jhum) {
+
+		numFichas[0] += convertidas;
+		numFichas[1] -= convertidas;
+	}
+	else if (turno == Jmaq) {
+
+		numFichas[1] += convertidas;
+		numFichas[0] -= convertidas;
 	}
 }
 
@@ -341,6 +430,8 @@ void JuegoOthello::convierteDiagonalDer(unsigned int c, unsigned int f) {
 	bool izConvertida = false;
 	bool drConvertida = false;
 
+	int convertidas = 0;
+
 	if (compruebaAbDiagonalDer(c, f)) {
 		while (enRango(col, fil) && !izConvertida) {
 
@@ -353,6 +444,8 @@ void JuegoOthello::convierteDiagonalDer(unsigned int c, unsigned int f) {
 				while (col <= c - 1) {
 
 					tablero->at(col, fil) = turno;
+
+					convertidas++;
 
 					col++;
 					fil++;
@@ -382,6 +475,8 @@ void JuegoOthello::convierteDiagonalDer(unsigned int c, unsigned int f) {
 
 					tablero->at(col, fil) = turno;
 
+					convertidas++;
+
 					col--;
 					fil--;
 
@@ -392,6 +487,17 @@ void JuegoOthello::convierteDiagonalDer(unsigned int c, unsigned int f) {
 			col++;
 			fil++;
 		}
+	}
+
+	if (turno == Jhum) {
+
+		numFichas[0] += convertidas;
+		numFichas[1] -= convertidas;
+	}
+	else if (turno == Jmaq) {
+
+		numFichas[1] += convertidas;
+		numFichas[0] -= convertidas;
 	}
 }
 
@@ -471,6 +577,8 @@ void JuegoOthello::convierteDiagonalIzq(unsigned int c, unsigned int f) {
 	bool izConvertida = false;
 	bool drConvertida = false;
 
+	int convertidas = 0;
+
 	if (compruebaArDiagonalIzq(c, f)) {
 		while (enRango(col, fil) && !izConvertida) {
 
@@ -483,6 +591,8 @@ void JuegoOthello::convierteDiagonalIzq(unsigned int c, unsigned int f) {
 				while (col <= c - 1) {
 
 					tablero->at(col, fil) = turno;
+
+					convertidas++;
 
 					col++;
 					fil--;
@@ -512,6 +622,8 @@ void JuegoOthello::convierteDiagonalIzq(unsigned int c, unsigned int f) {
 
 					tablero->at(col, fil) = turno;
 
+					convertidas++;
+
 					col--;
 					fil++;
 
@@ -523,6 +635,17 @@ void JuegoOthello::convierteDiagonalIzq(unsigned int c, unsigned int f) {
 			fil--;
 		}
 	}
+
+	if (turno == Jhum) {
+
+		numFichas[0] += convertidas;
+		numFichas[1] -= convertidas;
+	}
+	else if (turno == Jmaq) {
+
+		numFichas[1] += convertidas;
+		numFichas[0] -= convertidas;
+	}
 }
 
 bool JuegoOthello::compruebaDiagonalIzq(unsigned int c, unsigned int f) const {
@@ -533,10 +656,10 @@ bool JuegoOthello::compruebaDiagonalIzq(unsigned int c, unsigned int f) const {
 bool JuegoOthello::compruebaArDiagonalIzq(unsigned int c, unsigned int f) const{
 
 	// Válida representa una ficha del color del jugador
-	bool validaArDr, validaAbIz = false;
+	bool validaArDr = false;
 
 	// Vacía representa una casilla sin ficha
-	bool vaciasArDr, vaciasAbIz = false;
+	bool vaciasArDr = false;
 
 	if ((enRango(c - 1, f + 1) && (dameCasilla(c - 1, f + 1) == cambia(turno)))) {
 

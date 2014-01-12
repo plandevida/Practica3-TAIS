@@ -11,7 +11,7 @@
 #include "JuegoOthello.h"
 #include "InterfazGrafOthello.h"
 #include "JugadorAleaOthello.h"
-//#include "JugadorMinimaxOthello.h"
+#include "JugadorMinimaxOthello.h"
 
 //#include "JuegoConecta4.h"
 //#include "InterfazGrafConecta4.h"
@@ -97,13 +97,13 @@ namespace JuegosReunidos {
 				 tipoJugador = alea;
 				 nivel = bajo;
 
-				 partida = new Juego3enRaya();
+				 /*partida = new Juego3enRaya();
 				 interfaz = new InterfazGraf3enRaya(Tablero->Width, Tablero->Height);
-				 jugador = new JugadorAlea3enRaya();
+				 jugador = new JugadorAlea3enRaya();*/
 				 
-				 //partida = new JuegoOthello();
-				 //interfaz = new InterfazGrafOthello(Tablero->Width, Tablero->Height);
-				 //jugador = new JugadorAleOthello();
+				 partida = new JuegoOthello();
+				 interfaz = new InterfazGrafOthello(Tablero->Width, Tablero->Height);
+				 jugador = new JugadorAleaOthello();
 
 				 jugIni = Jhum;
 				 partida->reinicia(jugIni);
@@ -347,6 +347,7 @@ namespace JuegosReunidos {
 				 partida->reinicia(Jmaq);
 				 Tablero->Refresh();
 				 Sleep(milSeg);
+				 jugador = new JugadorAleaOthello();
 				 Casilla cb = jugador->juega(*partida);
 				 partida->aplicaJugada(cb);
 				 Tablero->Refresh();
@@ -357,10 +358,11 @@ namespace JuegosReunidos {
 			nivel = n;
 			delete jugador;
 			switch(juego){
-			case otelo : //INCOMPLETO jugador = new JugadorMinimaxOtelo(nivel); 
-				 break;
+			case otelo : 
+				jugador = new JugadorMinimaxOthello(nivel); 
+				break;
 			case conecta4: //INCOMPLETO  jugador = new JugadorMinimaxConecta4(nivel); 
-				 break;
+				break;
 			}
 			if(nivel==alto) altoToolStripMenuItem->Checked=true; else altoToolStripMenuItem->Checked=false;
 			if(nivel==medio) medioToolStripMenuItem->Checked=true; else medioToolStripMenuItem->Checked=false;
@@ -369,13 +371,13 @@ namespace JuegosReunidos {
 		}
 
 private: System::Void altoToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		//INCOMPLETO 	 cambiarNivelDificultad(alto);
+			cambiarNivelDificultad(alto);
 		 }
 private: System::Void medioToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		//INCOMPLETO 	 cambiarNivelDificultad(medio);
+			cambiarNivelDificultad(medio);
 		 }
 private: System::Void bajoToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		//INCOMPLETO 	 cambiarNivelDificultad(bajo);
+			cambiarNivelDificultad(bajo);
 		 }
 
 
@@ -419,8 +421,8 @@ private: System::Void oteloToolStripMenuItem_Click(System::Object^  sender, Syst
 				 delete interfaz;
 				 interfaz = new InterfazGrafOthello(Tablero->Width, Tablero->Height);
 				 if (tipoJugador == alea) jugador = new JugadorAleaOthello();
-				 // else // tipoJugador == minimax
-				 //	 jugador = new JugadorMinimaxOthello(nivel);
+				 else // tipoJugador == minimax
+					jugador = new JugadorMinimaxOthello(nivel);
 				 partida->reinicia(jugIni);
 				 Tablero->Refresh();
 			 }
