@@ -34,37 +34,55 @@ public:
 	// método abstracto que elige la posición del tablero donde jugar en el estado actual del juego EJ
 	virtual Casilla juega(const JuegoLogT2& EJ) const throw(EJugadorMinimax) {
 
-		Casilla mejorC;
+		Casilla cas;
 
-		if (typeid(EJ) != typeid(JuegoOthello)) throw EJugadorMinimax();
-		else {
+		bool pasarTurno = true;
 
-			float mejorV = (-1)* std::numeric_limits<float>::infinity();
+		float mejorC;
+		float mejorV = (-1)* std::numeric_limits<float>::infinity();
 
-			for (int c = 0; c < 8; c++) {
-				for (int f = 0; f < 8; f++) {
+		for (int c = 0; c < EJ.numCol()-1; c++) {
+			for (int f = 0; f < EJ.numFil(); f++) {
 
-					JuegoLogT2* juego = EJ.clona();
+				JuegoLogT2* juego = EJ.clona();
 
-					juego->aplicaJugada(c, f);
-					float v = valoraMin(juego, nivel - 1);
+				try {
+					if (juego->sePuede(c, f)) {
 
-					if (juego == NULL) {
-						delete juego;
+						juego->aplicaJugada(c, f);
+
+						pasarTurno = false;
+
+						float infinito = std::numeric_limits<float>::infinity();
+
+						float v = valoraMin(juego, nivel - 1, mejorV, infinito);
+
+						if (v > mejorV) {
+							mejorV = v;
+							mejorC = c;
+						}
 					}
+				}
+				catch (EJuego e) {}
 
-					if (v > mejorV) {
-						mejorV = v;
-						mejorC = c;
-					}
+				if (juego != NULL) {
+					delete juego;
 				}
 			}
 		}
 
-		return mejorC;
+		if (pasarTurno) {
+			cas = Casilla(8, 0);
+		}
+		else {
+			cas.col = mejorC;
+			cas.fil = mejorV;
+		}
+
+		return cas;
 	}
 
-	virtual float valoraMin(JuegoLogT2* EJ, int n) const {
+	virtual float valoraMin(const JuegoLogT2* EJ, int n, float a, float b) const {
 
 		float minimo;
 
@@ -72,20 +90,23 @@ public:
 			minimo = heuristica(EJ);
 		}
 		else {
-			float mejorV = std::numeric_limits<float>::infinity();
-
-			for (int c = 0; c < 8; c++) {
-				for (int f = 0; f < 8; f++) {
+			for (int c = 0; c < EJ->numCol()-1; c++) {
+				for (int f = 0; f < EJ->numFil(); f++) {
 
 					JuegoLogT2* juego = EJ->clona();
 
-					juego->aplicaJugada(c, f);
+					try {
+						if (juego->sePuede(c, f)) {
+							juego->aplicaJugada(c, f);
 
-					mejorV = min(valoraMax(EJ, n - 1), mejorV);
+							b = min(valoraMax(juego, n - 1, a, b), b);
 
-					minimo = mejorV;
+							if (a >= b) minimo = b;
+						}
+					}
+					catch (EJuego e) {}
 
-					if (juego == NULL) {
+					if (juego != NULL) {
 						delete juego;
 					}
 				}
@@ -95,7 +116,7 @@ public:
 		return minimo;
 	}
 	
-	virtual float valoraMax(JuegoLogT2* EJ, int n) const {
+	virtual float valoraMax(const JuegoLogT2* EJ, int n, float a, float b) const {
 
 		float maximo;
 
@@ -103,20 +124,24 @@ public:
 			maximo = heuristica(EJ);
 		}
 		else {
-			float mejorV = std::numeric_limits<float>::infinity();
 
-			for (int c = 0; c < 8; c++) {
-				for (int f = 0; f < 8; f++) {
+			for (int c = 0; c < EJ->numCol() - 1; c++) {
+				for (int f = 0; f < EJ->numCol(); f++) {
 
 					JuegoLogT2* juego = EJ->clona();
 
-					juego->aplicaJugada(c, f);
+					try {
+						if (juego->sePuede(c, f)) {
+							juego->aplicaJugada(c, f);
 
-					mejorV = max(valoraMin(EJ, n - 1), mejorV);
+							a = max(valoraMin(juego, n - 1, b, a), a);
 
-					maximo = mejorV;
+							if (b >= a) maximo = a;
+						}
+					}
+					catch (EJuego e) {}
 
-					if (juego == NULL) {
+					if (juego != NULL) {
 						delete juego;
 					}
 				}
@@ -126,7 +151,7 @@ public:
 		return maximo;
 	}
 
-	virtual float heuristica(JuegoLogT2* EJ) const = 0;
+	virtual float heuristica(const JuegoLogT2* EJ) const = 0;
 
 	void setNivel(unsigned int nivel) {
 		this->nivel = nivel;

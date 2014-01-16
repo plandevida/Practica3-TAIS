@@ -16,25 +16,13 @@
 #pragma unmanaged
 
 class JugadorMinimaxOthello : public JugadorMinimaxT2 {
-private:
-	unsigned int* azules;
-	unsigned int* naranjas;
-
-	typedef enum fichas {vacia, azul, naranja} FichaM;
-
-	FichaM **fichas;
 public:
 	JugadorMinimaxOthello(unsigned int nivel) {
-
-		azules = new unsigned int();
-		naranjas = new unsigned int();
 
 		JugadorMinimaxT2::setNivel(nivel);
 	}
 
 	~JugadorMinimaxOthello() {
-		delete azules;
-		delete naranjas;
 	}
 
 	virtual Casilla juega(const JuegoLogT2& EJ) const throw(EJugadorMinimax) {
@@ -49,7 +37,8 @@ public:
 		return c;
 	}
 
-	virtual float heuristica(JuegoLogT2* EJ) const;
+	virtual float heuristica(const JuegoLogT2* EJ) const;
 };
 
+#pragma managed
 #endif // JUGADORMINIMAXOTHELLO_H_
