@@ -37,7 +37,7 @@ public:
 		return c;
 	}
 
-	virtual float heuristica(const JuegoLogT2* EJ) const;
+	virtual float heuristica(const JuegoLogT2* EJ, const Turno t) const;
 };
 
 #pragma managed

@@ -11,7 +11,7 @@
 
 #pragma unmanaged
 
-float JugadorMinimaxOthello::heuristica(const JuegoLogT2* EJ) const {
+float JugadorMinimaxOthello::heuristica(const JuegoLogT2* EJ, const Turno t) const {
 
 	const int pesos[8][9] = {
 		{ 50,  -1, 5, 2, 2, 5,  -1, 50 },
@@ -31,11 +31,11 @@ float JugadorMinimaxOthello::heuristica(const JuegoLogT2* EJ) const {
 	for (int c = 0; c < EJ->numCol() -1; c++) {
 		for (int f = 0; f < EJ->numFil(); f++) {
 
-			if (EJ->dameCasilla(c, f) == EJ->dameTurno()) {
+			if (EJ->dameCasilla(c, f) == t) {
 
 				propias += pesos[f][c];
 			}
-			else if (EJ->dameCasilla(c, f) == cambia(EJ->dameTurno())) {
+			else if (EJ->dameCasilla(c, f) == cambia(t)) {
 
 				contrarias += pesos[f][c];
 			}

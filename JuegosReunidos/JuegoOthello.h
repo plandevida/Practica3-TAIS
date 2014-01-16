@@ -67,10 +67,8 @@ public:
 
 	virtual ~JuegoOthello() {}
 
-	virtual void reinicia(Turno JI){
+	virtual void reinicia(Turno JI) {
 		JuegoLogT2::reinicia(JI);
-
-
 		
 		libres = ((numCols - 1) * numFils) - 4;
 

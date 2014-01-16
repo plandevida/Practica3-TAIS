@@ -73,6 +73,7 @@ void InterfazGrafOthello::muestraEst(Graphics^ canvas, const JuegoOthello& EJ) c
 	// Pintar el número de fichas de cada color
 	Point posfichas(100, window_height - ladoCasilla / 2);
 
+	// Concatenaciones bizarras de C++
 	std::ostringstream oss;
 	oss << "Libres: " << EJ.getLibres() << ", Azules: " << EJ.getBlancas() << ", Naranjas: " << EJ.getNegras();
 	System::String^ cadena = gcnew System::String(oss.str().c_str());

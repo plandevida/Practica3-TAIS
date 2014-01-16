@@ -150,7 +150,6 @@ namespace JuegosReunidos {
 				 this->Tablero->Size = System::Drawing::Size(435, 435);
 				 this->Tablero->TabIndex = 0;
 				 this->Tablero->TabStop = false;
-				 this->Tablero->Click += gcnew System::EventHandler(this, &Form1::Tablero_Click);
 				 this->Tablero->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::Tablero_Paint);
 				 this->Tablero->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::Tablero_MouseUp);
 				 // 
@@ -435,9 +434,6 @@ private: System::Void oteloToolStripMenuItem_Click(System::Object^  sender, Syst
 				 partida->reinicia(jugIni);
 				 Tablero->Refresh();
 			 }
-}
-
-private: System::Void Tablero_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
