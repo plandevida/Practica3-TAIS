@@ -90,20 +90,20 @@ namespace JuegosReunidos {
 	private: System::Windows::Forms::ToolStripMenuItem^  salirToolStripMenuItem;
 
 			 void iniciar() {
-				 milSeg = 1000;  // espera antes de que la maquina juegue
+				 milSeg = 50;  // espera antes de que la maquina juegue
 
 				 // juego inicial por defecto
-				 juego = tresEnRaya;
+				 juego = otelo;
 				 tipoJugador = alea;
 				 nivel = bajo;
 
-				 partida = new Juego3enRaya();
+				 /*partida = new Juego3enRaya();
 				 interfaz = new InterfazGraf3enRaya(Tablero->Width, Tablero->Height);
-				 jugador = new JugadorAlea3enRaya();
+				 jugador = new JugadorAlea3enRaya();*/
 				 
-				 /*partida = new JuegoOthello();
+				 partida = new JuegoOthello();
 				 interfaz = new InterfazGrafOthello(Tablero->Width, Tablero->Height);
-				 jugador = new JugadorAleaOthello();*/
+				 jugador = new JugadorAleaOthello();
 
 				 jugIni = Jhum;
 				 partida->reinicia(jugIni);
@@ -347,14 +347,6 @@ namespace JuegosReunidos {
 				 partida->reinicia(Jmaq);
 				 Tablero->Refresh();
 				 Sleep(milSeg);
-
-				 if (typeid(jugador) == typeid(JugadorAleaOthello)) {
-					 jugador = new JugadorAleaOthello();
-				 }
-				 else if ( typeid(jugador) == typeid(JugadorMinimaxOthello)) {
-					 jugador = new JugadorMinimaxOthello(nivel);
-				 }
-
 				 Casilla cb = jugador->juega(*partida);
 				 partida->aplicaJugada(cb);
 				 Tablero->Refresh();

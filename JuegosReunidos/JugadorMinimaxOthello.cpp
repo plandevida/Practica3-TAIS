@@ -13,7 +13,7 @@
 
 float JugadorMinimaxOthello::heuristica(const JuegoLogT2* EJ, const Turno t) const {
 
-	const int pesos[8][9] = {
+	const int pesos[8][8] = {
 		{ 50,  -1, 5, 2, 2, 5,  -1, 50 },
 		{ -1, -10, 1, 1, 1, 1, -10, -1 },
 		{  5,   1, 1, 1, 1, 1,   1,  5 },
@@ -25,24 +25,22 @@ float JugadorMinimaxOthello::heuristica(const JuegoLogT2* EJ, const Turno t) con
 	};
 
 	float res = 0;
-	int propias = 0;
-	int contrarias = 0;
 
 	for (int c = 0; c < EJ->numCol() -1; c++) {
 		for (int f = 0; f < EJ->numFil(); f++) {
 
 			if (EJ->dameCasilla(c, f) == t) {
 
-				propias += pesos[f][c];
+				res += pesos[c][f];
 			}
 			else if (EJ->dameCasilla(c, f) == cambia(t)) {
 
-				contrarias += pesos[f][c];
+				res -= pesos[c][f];
 			}
 		}
 	}
 
-	return propias - contrarias;
+	return res;
 }
 
 #pragma managed

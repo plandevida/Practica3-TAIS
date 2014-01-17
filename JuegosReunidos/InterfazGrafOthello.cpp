@@ -26,25 +26,15 @@ void InterfazGrafOthello::muestraEst(Graphics^ canvas, const JuegoOthello& EJ) c
 	}
 	else {
 
-		/*if (EJ.getNegras() > EJ.getBlancas()) {
-			canvas->DrawString("GANADOR: Máquina", letra, Brushes::Red, pr);
-		}
-		else if (EJ.getNegras() < EJ.getBlancas()) {
-			canvas->DrawString("GANADOR: Usuario", letra, Brushes::Red, pr);
-		}
-		else {
-			canvas->DrawString("EMPATE", letra, Brushes::Red, pr);
-		}*/
-
 		switch (EJ.dameGanador()){
-		case Jhum: canvas->DrawString("GANADOR: Usuario", letra, Brushes::Red, pr); break;
-		case Jmaq: canvas->DrawString("GANADOR: Máquina", letra, Brushes::Red, pr); break;
+		case Jhum: canvas->DrawString("GANADOR: Usuario", letra, Brushes::DeepSkyBlue, pr); break;
+		case Jmaq: canvas->DrawString("GANADOR: Máquina", letra, Brushes::Orange, pr); break;
 		case Jn: canvas->DrawString("EMPATE", letra, Brushes::Red, pr); break;
 		}
 	}
 
 	unsigned int c, f, x, y;
-	for (c = 0; c<EJ.numCol()-1; c++) {
+	for (c = 0; c<EJ.numCol(); c++) {
 		x = (c + 1)*ladoCasilla;
 		for (f = 0; f<EJ.numFil(); f++) {
 			y = window_height - (f + 2)*ladoCasilla;  // dar la vuelta: y crece hacia abajo
@@ -67,11 +57,11 @@ void InterfazGrafOthello::muestraEst(Graphics^ canvas, const JuegoOthello& EJ) c
 
 	// Pintar la palabra PASAR en la columna 9
 	int g = window_width - ladoCasilla + ladoCasilla/4;
-	Point po(g, window_height - (EJ.numCol())*ladoCasilla);
+	Point po(g, window_height - (EJ.numFil()+1)*ladoCasilla);
 	canvas->DrawString("P\n\nA\n\nS\n\nA\n\nR\n\n\nT\n\nU\n\nR\n\nN\n\nO", letra, Brushes::Black, po);
 
 	// Pintar el número de fichas de cada color
-	Point posfichas(100, window_height - ladoCasilla / 2);
+	Point posfichas(100, window_height - 3*(ladoCasilla / 4 ));
 
 	// Concatenaciones bizarras de C++
 	std::ostringstream oss;

@@ -14,7 +14,7 @@
 class JuegoOthello : public JuegoLogT2 {
 
 public:
-	static const int numCols = 9;
+	static const int numCols = 8;
 	static const int numFils = 8;
 private:
 
@@ -55,8 +55,6 @@ private:
 	bool compruebaArDiagonalIzq(unsigned int c, unsigned int f) const;
 	bool compruebaAbDiagonalIzq(unsigned int c, unsigned int f) const;
 
-	bool compruebaPasar() const;
-
 	void setHaPasado(bool pasado) {
 		hapasado = pasado;
 	}
@@ -70,7 +68,7 @@ public:
 	virtual void reinicia(Turno JI) {
 		JuegoLogT2::reinicia(JI);
 		
-		libres = ((numCols - 1) * numFils) - 4;
+		libres = (numCols * numFils) - 4;
 
 		tablero->at(4, 4) = Jhum;
 		tablero->at(3, 3) = Jhum;
@@ -84,7 +82,7 @@ public:
 	}
 
 	virtual bool fin() const {
-		return libres == 0;
+		return libres == 0 && !compruebaPasar() && !sePuede();
 	}
 
 	virtual JuegoLogT2* clona() const {
@@ -92,6 +90,23 @@ public:
 	}
 
 	virtual void aplicaJugada(unsigned int c, unsigned int f) throw(EJuego);
+
+	virtual bool sePuede() const {
+		bool puede = false;
+		
+		for (int c = 0; c < numCols - 1; c++) {
+			for (int f = 0; f < numFils; f++) {
+
+				puede = (dameCasilla(c, f) == Jn)
+						&& (compruebaHorizontal(c, f)
+							|| compruebaVertical(c, f)
+							|| compruebaDiagonalDer(c, f)
+							|| compruebaDiagonalIzq(c, f));
+			}
+		}
+
+		return puede;
+	}
 
 	virtual bool sePuede(unsigned int c, unsigned int f) const throw() {
 
@@ -111,7 +126,7 @@ public:
 			}
 		}
 		catch (EJuego &) {
-			return false;
+			puede = false;
 		}
 
 		return puede;
@@ -136,6 +151,8 @@ public:
 	Casilla getUltimaCasilla() const {
 		return cas;
 	}
+
+	bool compruebaPasar() const;
 };
 
 #pragma managed

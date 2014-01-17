@@ -7,7 +7,7 @@
 
 #include "JuegoOthello.h"
 
-JuegoOthello::JuegoOthello(Turno JI) : libres( ((numCols-1)*numFils) - 4), hapasado(false) {
+JuegoOthello::JuegoOthello(Turno JI) : libres( ((numCols)*numFils) - 4), hapasado(false) {
 
 	numFichas[0] = 0;
 	numFichas[1] = 0;
@@ -30,12 +30,17 @@ void JuegoOthello::aplicaJugada(unsigned int c, unsigned int f) throw(EJuego) {
 	if (sePuede(c, f) && !ganador) {
 
 		// Se ha pasado turno
-		if (c == numCols - 1) {
-			setHaPasado(true);
+		if (c == numCols) {
+			if (!haPasado()) {
+				setHaPasado(true);
 
-			ganador = othello(c, f);
+				//ganador = othello(c, f);
 
-			if (!ganador) turno = cambia(turno);
+				if (!ganador) turno = cambia(turno);
+			}
+			else {
+				ganador = othello(c, f);
+			}
 		}
 		else { // Se puede poner ficha
 
@@ -52,14 +57,14 @@ void JuegoOthello::aplicaJugada(unsigned int c, unsigned int f) throw(EJuego) {
 			else if (turno == Jmaq)
 				numFichas[1]++;
 
-			// Determina si hay ganador
-			ganador = othello(c, f);
-
 			// Convierte las fichas del contrario
 			convierteHorizontal(c, f);
 			convierteVertical(c, f);
 			convierteDiagonalDer(c, f);
 			convierteDiagonalIzq(c, f);
+
+			// Determina si hay ganador
+			ganador = othello(c, f);
 
 			// Pone el turno del ganador, en 
 			// función del número de fichas

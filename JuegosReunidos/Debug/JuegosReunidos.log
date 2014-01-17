@@ -1,48 +1,8 @@
-﻿Compilación iniciada a las 16/01/2014 22:15:52.
-     1>Proyecto "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" en el nodo 2 (Rebuild destinos).
+﻿Compilación iniciada a las 17/01/2014 18:48:42.
+     1>Proyecto "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Isrc /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\JuegosReunidos.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /wd4290 /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib stdafx.cpp
-         stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Isrc /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /wd4290 /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib AssemblyInfo.cpp InterfazGrafOthello.cpp JuegoOthello.cpp JuegosReunidos.cpp JugadorAleaOthello.cpp JugadorMinimaxOthello.cpp src\InterfazGraf3enRaya.cpp src\InterfazGrafT2.cpp src\Juego3enRaya.cpp src\JuegoLogT2.cpp src\JugadorAlea3enRaya.cpp
-         AssemblyInfo.cpp
-     1>AssemblyInfo.cpp(40): warning C4947: 'RequestMinimum' : marcado como obsoleto
-                 Mensaje: 'Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Isrc /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /wd4290 /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib InterfazGrafOthello.cpp
          InterfazGrafOthello.cpp
-         JuegoOthello.cpp
-     1>JuegoOthello.cpp(172): warning C4018: '<=' : no coinciden signed/unsigned
-     1>JuegoOthello.cpp(198): warning C4018: '>=' : no coinciden signed/unsigned
-     1>JuegoOthello.cpp(444): warning C4018: '<=' : no coinciden signed/unsigned
-     1>JuegoOthello.cpp(474): warning C4018: '>=' : no coinciden signed/unsigned
-     1>JuegoOthello.cpp(591): warning C4018: '<=' : no coinciden signed/unsigned
-     1>JuegoOthello.cpp(621): warning C4018: '>=' : no coinciden signed/unsigned
-         JuegosReunidos.cpp
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(44): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(45): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(127): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(128): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(164): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(165): warning C4018: '<' : no coinciden signed/unsigned
-         JugadorAleaOthello.cpp
-         JugadorMinimaxOthello.cpp
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(44): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(45): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(127): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(128): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(164): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\daniel\documents\github\practica3-tais\juegosreunidos\JugadorMinimaxT2.h(165): warning C4018: '<' : no coinciden signed/unsigned
-     1>JugadorMinimaxOthello.cpp(31): warning C4018: '<' : no coinciden signed/unsigned
-     1>JugadorMinimaxOthello.cpp(32): warning C4018: '<' : no coinciden signed/unsigned
-     1>JugadorMinimaxOthello.cpp(45): warning C4244: 'return' : conversión de 'int' a 'float'; posible pérdida de datos
-         InterfazGraf3enRaya.cpp
-         InterfazGrafT2.cpp
-         Juego3enRaya.cpp
-         JuegoLogT2.cpp
-         JugadorAlea3enRaya.cpp
-         Generando código...
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Isrc /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /wd4290 /analyze- /errorReport:prompt "C:\Users\Daniel\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
-         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\app.res" app.rc 
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\Debug\JuegosReunidos.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\JuegosReunidos.Form1.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\Debug\JuegosReunidos.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\app.res
          Debug\AssemblyInfo.obj
@@ -59,8 +19,8 @@
          Debug\stdafx.obj
          "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
          JuegosReunidos.vcxproj -> C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\Debug\JuegosReunidos.exe
-     1>Compilación del proyecto terminada "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" (Rebuild destinos).
+     1>Compilación del proyecto terminada "C:\Users\Daniel\Documents\GitHub\Practica3-TAIS\JuegosReunidos\JuegosReunidos.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:07.33
+Tiempo transcurrido 00:00:01.41

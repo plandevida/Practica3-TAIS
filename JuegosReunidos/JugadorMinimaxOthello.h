@@ -31,7 +31,16 @@ public:
 
 		if (typeid(EJ) != typeid(JuegoOthello)) throw new EJugadorMinimax();
 		else {
-			c = JugadorMinimaxT2::juega(EJ);
+
+			JuegoOthello* juego = (JuegoOthello*) &EJ;
+
+			if (!juego->compruebaPasar()) {
+
+				c = JugadorMinimaxT2::juega(EJ);
+			}
+			else {
+				c = Casilla(8, 0);
+			}
 		}
 
 		return c;
