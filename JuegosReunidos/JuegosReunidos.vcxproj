@@ -95,16 +95,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="InterfazGrafOthello.cpp" />
-    <ClCompile Include="JuegoOthello.cpp" />
     <ClCompile Include="JuegosReunidos.cpp" />
-    <ClCompile Include="JugadorAleaOthello.cpp" />
-    <ClCompile Include="JugadorMinimaxOthello.cpp" />
     <ClCompile Include="src\InterfazGraf3enRaya.cpp" />
+    <ClCompile Include="src\InterfazGrafOthello.cpp" />
     <ClCompile Include="src\InterfazGrafT2.cpp" />
     <ClCompile Include="src\Juego3enRaya.cpp" />
     <ClCompile Include="src\JuegoLogT2.cpp" />
+    <ClCompile Include="src\JuegoOthello.cpp" />
     <ClCompile Include="src\JugadorAlea3enRaya.cpp" />
+    <ClCompile Include="src\JugadorAleaOthello.cpp" />
+    <ClCompile Include="src\JugadorMinimaxOthello.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -114,18 +114,18 @@
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="InterfazGrafOthello.h" />
-    <ClInclude Include="JugadorMinimaxOthello.h" />
-    <ClInclude Include="JugadorMinimaxT2.h" />
-    <ClInclude Include="JuegoOthello.h" />
-    <ClInclude Include="JugadorAleaOthello.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\InterfazGraf3enRaya.h" />
+    <ClInclude Include="src\InterfazGrafOthello.h" />
     <ClInclude Include="src\InterfazGrafT2.h" />
     <ClInclude Include="src\Juego3enRaya.h" />
     <ClInclude Include="src\JuegoLogT2.h" />
+    <ClInclude Include="src\JuegoOthello.h" />
     <ClInclude Include="src\JugadorAlea3enRaya.h" />
+    <ClInclude Include="src\JugadorAleaOthello.h" />
     <ClInclude Include="src\JugadorAutoT2.h" />
+    <ClInclude Include="src\JugadorMinimaxOthello.h" />
+    <ClInclude Include="src\JugadorMinimaxT2.h" />
     <ClInclude Include="src\Matriz.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

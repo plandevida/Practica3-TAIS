@@ -45,16 +45,16 @@
     <ClCompile Include="src\InterfazGrafT2.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="JuegoOthello.cpp">
+    <ClCompile Include="src\JugadorAleaOthello.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="InterfazGrafOthello.cpp">
+    <ClCompile Include="src\JugadorMinimaxOthello.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="JugadorAleaOthello.cpp">
+    <ClCompile Include="src\InterfazGrafOthello.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="JugadorMinimaxOthello.cpp">
+    <ClCompile Include="src\JuegoOthello.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,19 +89,19 @@
     <ClInclude Include="src\InterfazGrafT2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="JuegoOthello.h">
+    <ClInclude Include="src\JugadorAleaOthello.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="InterfazGrafOthello.h">
+    <ClInclude Include="src\JugadorMinimaxOthello.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="JugadorAleaOthello.h">
+    <ClInclude Include="src\JugadorMinimaxT2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="JugadorMinimaxT2.h">
+    <ClInclude Include="src\InterfazGrafOthello.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="JugadorMinimaxOthello.h">
+    <ClInclude Include="src\JuegoOthello.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
