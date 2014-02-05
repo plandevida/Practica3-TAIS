@@ -1,8 +1,8 @@
 /*
  * JuegoLogT2.h
  *
- *  Created on: 22/11/2012
- *      Author: alberto
+ *  Modificated on: 26/12/2013
+ *      Author: Daniel Serrano Torres
  */
 
 #ifndef JUEGOLOGT2_H_

@@ -1,3 +1,10 @@
+/*
+* Form1.h
+*
+*  Modificated on: 26/12/2013
+*      Author: Daniel Serrano Torres
+*/
+
 #pragma once
 
 #include "JuegoLogT2.h"

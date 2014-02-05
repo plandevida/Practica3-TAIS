@@ -1,5 +1,5 @@
 /*
-* JuegoOthello.cpp
+* JugadorMinimaxT2.h
 *
 *  Created on: 26/12/2013
 *      Author: Daniel Serrano Torres
